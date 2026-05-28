@@ -1,0 +1,5 @@
+**/.env
+**/.pytest_cache
+**/**_env
+**/__pycache__
+**/*.ipynb
