@@ -31,23 +31,7 @@ def extract_noi_dung_blocks(markdown_text: str) -> list[str]:
     current: list[str] = []
 
     for line in lines:
-        if line.strip() == "### Nội dung":
-            if collecting and current:
-                blocks.append("\n".join(current).strip())
-            collecting = True
-            current = []
-            continue
-
-        if collecting and line.strip() == "---":
-            block = "\n".join(current).strip()
-            if block:
-                blocks.append(block)
-            collecting = False
-            current = []
-            continue
-
-        if collecting:
-            current.append(line)
+        current.append(line)
 
     if collecting and current:
         block = "\n".join(current).strip()
@@ -254,13 +238,6 @@ def main() -> None:
             index=0,
         )
 
-        article_limit = st.slider(
-            "Số bài lấy để chạy",
-            min_value=1,
-            max_value=max(len(noi_dung_blocks), 1),
-            value=min(20, max(len(noi_dung_blocks), 1)),
-        )
-
         chunk_size = st.slider("chunk_size (ký tự)", min_value=100, max_value=2000, value=500, step=50)
         overlap = st.slider("overlap (chỉ cho FixedSize)", min_value=0, max_value=400, value=50, step=10)
         if overlap >= chunk_size:
@@ -277,7 +254,7 @@ def main() -> None:
         llm_model = DEFAULT_CHAT_MODEL
 
     if source_mode == "Chỉ các mục ### Nội dung":
-        selected_blocks = noi_dung_blocks[:article_limit]
+        selected_blocks = noi_dung_blocks[:len(noi_dung_blocks)]
         input_text = "\n\n".join(selected_blocks)
     else:
         input_text = markdown_text
