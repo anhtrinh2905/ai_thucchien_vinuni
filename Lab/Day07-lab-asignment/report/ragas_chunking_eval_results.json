@@ -1,0 +1,216 @@
+{
+  "summary": [
+    {
+      "method": "FixedSizeChunker",
+      "n_questions": 5,
+      "faithfulness_avg": 0.6,
+      "answer_relevancy_avg": 0.5258287183758236,
+      "context_precision_avg": 0.639999999936,
+      "context_recall_avg": 0.7333333333333333,
+      "fallback_answer_relevancy_count": 0,
+      "chunk_count": 2346
+    },
+    {
+      "method": "SentenceChunker",
+      "n_questions": 5,
+      "faithfulness_avg": 0.55,
+      "answer_relevancy_avg": 0.5167657547915759,
+      "context_precision_avg": 0.6899999999355,
+      "context_recall_avg": 0.8,
+      "fallback_answer_relevancy_count": 0,
+      "chunk_count": 2373
+    },
+    {
+      "method": "RecursiveChunker",
+      "n_questions": 5,
+      "faithfulness_avg": 0.76,
+      "answer_relevancy_avg": 0.6110808641810765,
+      "context_precision_avg": 0.49999999996333333,
+      "context_recall_avg": 0.3,
+      "fallback_answer_relevancy_count": 0,
+      "chunk_count": 2948
+    }
+  ],
+  "details": [
+    {
+      "method": "FixedSizeChunker",
+      "id": "q1",
+      "question": "Trong tuần được thu thập, chuyên mục Star của Kenh14 có bao nhiêu bài viết?",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.713251729840489,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "response": "Trong tuần được thu thập, chuyên mục Star của Kenh14 có tổng cộng 206 bài viết.\n\nContext hỗ trợ câu trả lời: Context 1.",
+      "top_context_preview": "# Kenh14 Star — Tổng hợp bài viết 1 tuần  - **Nguồn:** kenh14.vn/star - **Thu thập lúc:** 2026-06-05T08:28:25.954Z - **Khoảng thời gian:** 2026-05-29 to 2026-06-05 - **Tổng số bài:** 206 - **Phân bổ theo ngày:**   - 2026"
+    },
+    {
+      "method": "FixedSizeChunker",
+      "id": "q2",
+      "question": "Vì sao Jang Ga Hyun bức xúc đăng bài trên trang cá nhân?",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6655037607404524,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "response": "Jang Ga Hyun bức xúc đăng bài trên trang cá nhân vì cô bị một tài xế đe dọa sự riêng tư sau khi không đáp lại tin nhắn của anh này. Cô đã đăng tải những tin nhắn của tài xế lên trang cá nhân để bày tỏ sự bức xúc.\n\nContext hỗ trợ: Context 1.",
+      "top_context_preview": "-tung-clip-rieng-tu-215260605092644307.chn)  > Trên trang cá nhân, nữ diễn viên này không giấu được sự bức xúc.  ### Nội dung  Mới đây, nữ diễn viên Jang Ga Hyun tiết lộ cô bị 1 tài xế đe dọa sự riêng tư sau khi không đá"
+    },
+    {
+      "method": "FixedSizeChunker",
+      "id": "q3",
+      "question": "Jang Won Young bị chỉ trích vì hành động gì ở sân bay?",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.669909170323158,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.9999999999,
+      "context_recall": 0.6666666666666666,
+      "response": "Jang Won Young bị chỉ trích vì tháo khẩu trang để nhân viên sân bay kiểm tra gương mặt và có thái độ bị cho là vô cùng tồi tệ. (Context 1)",
+      "top_context_preview": "ô cùng lễ phép. Ảnh: X Đã có đến hàng chục ngàn bình luận chỉ trích Jang Won Young từ khắp nơi đến thế giới.  Dân mạng đều cho rằng việc tháo khẩu trang để nhân viên sân bay kiểm tra gương mặt không hề khó, và Jang Won Y"
+    },
+    {
+      "method": "FixedSizeChunker",
+      "id": "q4",
+      "question": "Tin vui mới của Angelababy trong bài viết là gì?",
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.0,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "response": "Chưa đủ dữ liệu để trả lời câu hỏi về tin vui mới của Angelababy.",
+      "top_context_preview": "khấu trực tiếp VTV. Bây giờ mỗi khi nhìn lại những khoảnh khắc trên truyền hình của mình ngày xưa rất buồn cười, vì làm sao có thể ngờ nghệch đến thế được. Nhưng đúng là phải đi lên từ những điều đó thì mới có Hương Gian"
+    },
+    {
+      "method": "FixedSizeChunker",
+      "id": "q5",
+      "question": "Hề Mộng Dao gây chú ý vì chi tiết xa hoa nào trước đám cưới?",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.5804789309750181,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.19999999998,
+      "context_recall": 1.0,
+      "response": "Hề Mộng Dao gây chú ý trước đám cưới với chi tiết xa hoa là quà tặng cho khách mời, bao gồm nước hoa Pháp đặt làm riêng, nến thơm, bánh cưới đạt sao Michelin, và mô hình, với tổng chi phí lên đến hàng tỷ đồng. Ngoài ra, tên của cô được đặt trước tên Hà Du Quân trên thiệp mời và danh sách quà tặng, thể hiện sự tôn trọng và yêu thương từ chồng. \n\nContext hỗ trợ: [Context 2].",
+      "top_context_preview": "ít chông gai mà người phụ nữ này đã đi qua để có được khoảnh khắc này.Cuộc \"kiểm định\" khắt khe nhất showbiz châu Á1 ngày trước đám cưới Hề Mộng Dao và thiếu gia trùm sòng bạc Macau: Hàng trăm khách mời nhận 23 triệu đồn"
+    },
+    {
+      "method": "SentenceChunker",
+      "id": "q1",
+      "question": "Trong tuần được thu thập, chuyên mục Star của Kenh14 có bao nhiêu bài viết?",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.7148059197891938,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "response": "Trong tuần được thu thập, chuyên mục Star của Kenh14 có tổng cộng 206 bài viết.\n\nContext hỗ trợ câu trả lời: Context 1.",
+      "top_context_preview": "# Kenh14 Star — Tổng hợp bài viết 1 tuần  - **Nguồn:** kenh14.vn/star - **Thu thập lúc:** 2026-06-05T08:28:25.954Z - **Khoảng thời gian:** 2026-05-29 to 2026-06-05 - **Tổng số bài:** 206 - **Phân bổ theo ngày:**   - 2026"
+    },
+    {
+      "method": "SentenceChunker",
+      "id": "q2",
+      "question": "Vì sao Jang Ga Hyun bức xúc đăng bài trên trang cá nhân?",
+      "faithfulness": 0.75,
+      "answer_relevancy": 0.6655037607404524,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "response": "Jang Ga Hyun bức xúc đăng bài trên trang cá nhân vì cô bị một tài xế đe dọa sự riêng tư sau khi không đáp lại tin nhắn của anh này. \n\nContext hỗ trợ: Context 1 và Context 2.",
+      "top_context_preview": "# Kenh14 Star — Tổng hợp bài viết 1 tuần  - **Nguồn:** kenh14.vn/star - **Thu thập lúc:** 2026-06-05T08:28:25.954Z - **Khoảng thời gian:** 2026-05-29 to 2026-06-05 - **Tổng số bài:** 206 - **Phân bổ theo ngày:**   - 2026"
+    },
+    {
+      "method": "SentenceChunker",
+      "id": "q3",
+      "question": "Jang Won Young bị chỉ trích vì hành động gì ở sân bay?",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.5367443929543901,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.9999999999,
+      "context_recall": 1.0,
+      "response": "Jang Won Young bị chỉ trích vì tháo khẩu trang để nhân viên sân bay kiểm tra gương mặt và có thái độ không tốt. \n\nContext hỗ trợ: Context 1, Context 3.",
+      "top_context_preview": "Ảnh: X Thành viên IVE đi phía sau có thái độ vô cùng lễ phép. Ảnh: X Đã có đến hàng chục ngàn bình luận chỉ trích Jang Won Young từ khắp nơi đến thế giới. Dân mạng đều cho rằng việc tháo khẩu trang để nhân viên sân bay k"
+    },
+    {
+      "method": "SentenceChunker",
+      "id": "q4",
+      "question": "Tin vui mới của Angelababy trong bài viết là gì?",
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.0,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "response": "Chưa đủ dữ liệu để xác định tin vui mới của Angelababy từ context được cung cấp.",
+      "top_context_preview": "Nhưng đúng là phải đi lên từ những điều đó thì mới có Hương Giang của hôm nay và được mọi người yêu quý. Nhìn tôi lanh lợi như vậy nhưng thực chất lại rất đơn giản, miễn làm điều gì hay và vui mà không có hại đến ai thì "
+    },
+    {
+      "method": "SentenceChunker",
+      "id": "q5",
+      "question": "Hề Mộng Dao gây chú ý vì chi tiết xa hoa nào trước đám cưới?",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.666774700473843,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.4499999999775,
+      "context_recall": 1.0,
+      "response": "Hề Mộng Dao gây chú ý trước đám cưới vì đeo bộ trang sức kim cương gồm khuyên tai, vòng tay và nhẫn tổng cộng 103,7 carat, trị giá khoảng 49 triệu NDT (gần 180 tỷ đồng).\n\nContext hỗ trợ: Context 2.",
+      "top_context_preview": "Đến lời thề trong đám cưới Hà Du Quân và Hề Mộng Dao cũng \"đậm mùi tiền\" Nếu Potel et Chabot là tên tuổi phụ trách ẩm thực, thì đơn vị được Ming Xi chọn để \"mặc\" cho không gian tiệc cưới cũng không kém phần danh giá: Tul"
+    },
+    {
+      "method": "RecursiveChunker",
+      "id": "q1",
+      "question": "Trong tuần được thu thập, chuyên mục Star của Kenh14 có bao nhiêu bài viết?",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.9910823984497683,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.49999999995,
+      "context_recall": 1.0,
+      "response": "Trong tuần được thu thập, chuyên mục Star của Kenh14 có tổng cộng 206 bài viết.\n\nContext hỗ trợ câu trả lời: Context 2.",
+      "top_context_preview": "- **Tác giả:** Hạ Anh  - **Thời gian:** 2026-05-30T16:16:00+07:00 - **Danh mục:** Star - **Tags:** Tin tức sao Việt, Phương Oanh, giải trí - **URL:** [https://kenh14.vn/phuong-oanh-hien-tai-song-trong-biet-thu-mot-minh-d"
+    },
+    {
+      "method": "RecursiveChunker",
+      "id": "q2",
+      "question": "Vì sao Jang Ga Hyun bức xúc đăng bài trên trang cá nhân?",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6655037607404524,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.9999999999,
+      "context_recall": 0.0,
+      "response": "Jang Ga Hyun bức xúc đăng bài trên trang cá nhân vì cô bị một tài xế đe dọa sự riêng tư sau khi không đáp lại tin nhắn của anh này. (Context 1)",
+      "top_context_preview": "Mới đây, nữ diễn viên Jang Ga Hyun tiết lộ cô bị 1 tài xế đe dọa sự riêng tư sau khi không đáp lại tin nhắn của anh này. Trên trang cá nhân, Jang Ga Hyun đăng tải những tin nhắn của tài xế. Ban đầu, những tin nhắn này ma"
+    },
+    {
+      "method": "RecursiveChunker",
+      "id": "q3",
+      "question": "Jang Won Young bị chỉ trích vì hành động gì ở sân bay?",
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.669909170323158,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.9999999999666667,
+      "context_recall": 0.5,
+      "response": "Jang Won Young bị chỉ trích vì không hợp tác tháo khẩu trang để nhân viên sân bay kiểm tra gương mặt, khiến quá trình kiểm tra mất nhiều thời gian hơn.\n\nContext hỗ trợ: Context 1, Context 2.",
+      "top_context_preview": "Cái tên Jang Won Young luôn có sức hút cực lớn, song cũng đi kèm vô số tranh cãi. Mới đây nhất, đoạn clip \"công chúa Kpop\" làm thủ tục ở sân bay đã làm bùng nổ mạng xã hội, thu hút đến hơn 21 triệu lượt xem trên X và vô "
+    },
+    {
+      "method": "RecursiveChunker",
+      "id": "q4",
+      "question": "Tin vui mới của Angelababy trong bài viết là gì?",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "response": "Chưa đủ dữ liệu để xác định tin vui mới của Angelababy. Context được cung cấp không chứa thông tin chi tiết về tin vui này.",
+      "top_context_preview": "Mới đây, một bài đăng trên Threads liên quan đến Á hậu Hương Giang đang thu hút sự chú ý của cộng đồng mạng. Theo chia sẻ của một tài khoản tự nhận là người hâm mộ, cô đã chi khoảng 98 triệu đồng để ủng hộ Hương Giang tạ"
+    },
+    {
+      "method": "RecursiveChunker",
+      "id": "q5",
+      "question": "Hề Mộng Dao gây chú ý vì chi tiết xa hoa nào trước đám cưới?",
+      "faithfulness": 0.8,
+      "answer_relevancy": 0.7289089913920036,
+      "answer_relevancy_source": "ragas",
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "response": "Hề Mộng Dao gây chú ý vì chi tiết xa hoa trước đám cưới là việc chi bộn tiền và hợp tác PR với nhiều đơn vị, trong đó có tạp chí Vogue, để đám cưới của họ phủ sóng trên truyền thông và mạng xã hội toàn cầu. Điều này nhằm tăng danh tiếng và thu hút đầu tư cho việc kinh doanh của Hà Du Quân và gia tộc. \n\nContext hỗ trợ: Context 4.",
+      "top_context_preview": "Ngay sau khi tiệc tàn, mọi chi tiết xoay quanh đám cưới của Hề Mộng Dao và Hà Du Quân lập tức bị cư dân mạng \"soi\" kỹ. Từ trang phục, trang sức đến địa điểm tổ chức của cặp đôi đều bị nghi ngờ có yếu tố tài trợ thương mạ"
+    }
+  ]
+}

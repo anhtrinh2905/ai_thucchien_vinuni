@@ -1,5 +1,9 @@
 pytest>=7.0
 python-dotenv>=1.0
+streamlit>=1.36
+openai>=1.0
+datasets>=2.19
+ragas>=0.1.9
 
 # Optional manual-demo extras
 # Install local embedder support with:
