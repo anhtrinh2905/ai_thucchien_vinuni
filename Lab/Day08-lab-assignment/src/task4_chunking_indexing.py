@@ -72,6 +72,7 @@ def get_weaviate_client():
         return weaviate.connect_to_weaviate_cloud(
             cluster_url=url,
             auth_credentials=AuthApiKey(api_key),
+            skip_init_checks=True,
         )
     return weaviate.connect_to_local()
 
