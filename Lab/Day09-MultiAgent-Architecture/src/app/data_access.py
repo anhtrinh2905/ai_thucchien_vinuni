@@ -1,48 +1,105 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 from typing import Any
 
+from langchain_core.tools import tool
+
 
 class ShoppingDataStore:
-    """Student scaffold for mock-data lookup."""
+    """Mock data store with fast in-memory indexes."""
 
     def __init__(self, json_path: Path) -> None:
-        # TODO 1:
-        # - đọc JSON
-        # - lưu `metadata`, `customers`, `orders`, `vouchers`
-        # - build các index để lookup nhanh
-        raise NotImplementedError("Student TODO: load mock data and build indexes")
+        with open(json_path, encoding="utf-8") as f:
+            data = json.load(f)
+
+        self.metadata = data.get("metadata", {})
+        self._customers = data.get("customers", [])
+        self._orders = data.get("orders", [])
+        self._vouchers = data.get("vouchers", [])
+
+        self.customer_by_id: dict[str, Any] = {
+            c["customer_id"]: c for c in self._customers
+        }
+        self.order_by_id: dict[str, Any] = {
+            str(o["order_id"]): o for o in self._orders
+        }
+
+        self.orders_by_customer_id: dict[str, list] = {}
+        for o in self._orders:
+            cid = o.get("customer_id", "")
+            self.orders_by_customer_id.setdefault(cid, []).append(o)
+
+        self.vouchers_by_customer_id: dict[str, list] = {}
+        for v in self._vouchers:
+            cid = v.get("customer_id", "")
+            self.vouchers_by_customer_id.setdefault(cid, []).append(v)
 
     def get_customer_by_id(self, customer_id: str) -> dict[str, Any]:
-        # TODO 2:
-        # - trả {"status":"ok","customer":...} hoặc {"status":"not_found", ...}
-        raise NotImplementedError
+        c = self.customer_by_id.get(str(customer_id))
+        if c is None:
+            return {"status": "not_found", "customer_id": str(customer_id)}
+        return {"status": "ok", "customer": c}
 
-    def get_orders_by_customer_id(self, customer_id: str, limit: int = 10) -> dict[str, Any]:
-        # TODO 3:
-        # - trả danh sách order gần nhất cho customer
-        raise NotImplementedError
+    def get_orders_by_customer_id(
+        self, customer_id: str, limit: int = 10
+    ) -> dict[str, Any]:
+        cid = str(customer_id)
+        if cid not in self.customer_by_id:
+            return {"status": "not_found", "customer_id": cid}
+        orders = self.orders_by_customer_id.get(cid, [])
+        return {"status": "ok", "customer_id": cid, "orders": orders[:limit]}
 
     def get_order_detail_by_order_id(self, order_id: str) -> dict[str, Any]:
-        # TODO 4:
-        # - trả chi tiết một order
-        raise NotImplementedError
+        oid = str(order_id)
+        o = self.order_by_id.get(oid)
+        if o is None:
+            return {"status": "not_found", "order_id": oid}
+        return {"status": "ok", "order": o}
 
     def get_vouchers_by_customer_id(
         self,
         customer_id: str,
         only_active: bool = False,
     ) -> dict[str, Any]:
-        # TODO 5:
-        # - lọc voucher theo customer
-        # - nếu `only_active=True` thì chỉ giữ voucher còn dùng được
-        raise NotImplementedError
+        cid = str(customer_id)
+        if cid not in self.customer_by_id:
+            return {"status": "not_found", "customer_id": cid}
+        vouchers = self.vouchers_by_customer_id.get(cid, [])
+        if only_active:
+            vouchers = [v for v in vouchers if v.get("status") == "active"]
+        return {"status": "ok", "customer_id": cid, "vouchers": vouchers}
 
 
 def build_data_tools(store: ShoppingDataStore) -> list:
-    # TODO 6:
-    # - dùng decorator @tool của LangChain
-    # - wrap 4 methods lookup thành 4 tools nhỏ
-    # - mô tả tool rõ ràng để LLM chọn đúng
-    raise NotImplementedError("Student TODO: build lookup tools")
+    @tool
+    def get_customer_by_id(customer_id: str) -> dict:
+        """Look up customer profile by customer_id (e.g. 'C001').
+        Returns tier, max_voucher_per_month, remaining_voucher_quota_this_month, loyalty_points, contact info."""
+        return store.get_customer_by_id(customer_id)
+
+    @tool
+    def get_orders_by_customer_id(customer_id: str) -> dict:
+        """Get the list of recent orders for a customer by customer_id (e.g. 'C001').
+        Returns order ids, statuses, and basic info."""
+        return store.get_orders_by_customer_id(customer_id)
+
+    @tool
+    def get_order_detail_by_order_id(order_id: str) -> dict:
+        """Get full details of a single order by order_id (e.g. '1971').
+        Includes order_status, estimated_delivery, delivered_at, can_return_now, eligible_for_return_until, items."""
+        return store.get_order_detail_by_order_id(order_id)
+
+    @tool
+    def get_vouchers_by_customer_id(customer_id: str) -> dict:
+        """Get all vouchers for a customer by customer_id (e.g. 'C001').
+        Includes voucher_code, status (active/used/expired/locked), discount_value, end_at."""
+        return store.get_vouchers_by_customer_id(customer_id)
+
+    return [
+        get_customer_by_id,
+        get_orders_by_customer_id,
+        get_order_detail_by_order_id,
+        get_vouchers_by_customer_id,
+    ]
