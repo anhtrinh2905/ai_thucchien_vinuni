@@ -108,8 +108,12 @@ def load_settings(project_dir: Path | None = None) -> Settings:
         comparison_report=data_dir / "reports" / "corruption_report.md",
     )
 
+    custom_llm_base_url = os.getenv("CUSTOM_LLM_BASE_URL") or os.getenv("LLM_URL")
+    custom_llm_api_key = os.getenv("CUSTOM_LLM_API_KEY") or os.getenv("LLM_KEY")
+    default_provider = "custom" if custom_llm_base_url else "gemini"
+
     return Settings(
-        llm_provider=os.getenv("LLM_PROVIDER", "gemini"),
+        llm_provider=os.getenv("LLM_PROVIDER", default_provider),
         model_name=os.getenv("LLM_MODEL", "gemini-2.5-flash"),
         google_api_key=os.getenv("GOOGLE_API_KEY"),
         openai_api_key=os.getenv("OPENAI_API_KEY"),
@@ -117,8 +121,8 @@ def load_settings(project_dir: Path | None = None) -> Settings:
         openrouter_api_key=os.getenv("OPENROUTER_API_KEY"),
         openrouter_base_url=os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"),
         ollama_base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
-        custom_llm_api_key=os.getenv("CUSTOM_LLM_API_KEY"),
-        custom_llm_base_url=os.getenv("CUSTOM_LLM_BASE_URL"),
+        custom_llm_api_key=custom_llm_api_key,
+        custom_llm_base_url=custom_llm_base_url,
         embedding_model="sentence-transformers/all-MiniLM-L6-v2",
         baseline_collection_name="papers-baseline",
         corrupted_collection_name="papers-corrupted",

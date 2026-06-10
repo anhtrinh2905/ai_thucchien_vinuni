@@ -1,0 +1,48 @@
+{
+  "seed": 42,
+  "actions": [
+    {
+      "action": "drop_latest_records",
+      "count": 2,
+      "indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "action": "blank_summary",
+      "indices": [
+        0,
+        17
+      ]
+    },
+    {
+      "action": "inject_noise",
+      "indices": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "action": "truncate_title",
+      "indices": [
+        19,
+        20
+      ]
+    },
+    {
+      "action": "stale_publication_date",
+      "indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "action": "add_duplicates",
+      "count": 2
+    }
+  ],
+  "rows_before": 23,
+  "rows_after": 23
+}

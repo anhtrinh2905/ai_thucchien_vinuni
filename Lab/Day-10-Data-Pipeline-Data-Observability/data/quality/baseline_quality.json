@@ -1,0 +1,39 @@
+{
+  "report_name": "baseline_quality",
+  "total_rows": 23,
+  "passed_checks": 6,
+  "failed_checks": 0,
+  "success": true,
+  "checks": [
+    {
+      "check": "row_count_minimum",
+      "passed": true,
+      "detail": "Found 23 rows; expected at least 4."
+    },
+    {
+      "check": "paper_id_not_null",
+      "passed": true,
+      "detail": "Null paper_id rows: 0."
+    },
+    {
+      "check": "paper_id_unique",
+      "passed": true,
+      "detail": "Unique paper_id count: 23 / 23."
+    },
+    {
+      "check": "title_not_null",
+      "passed": true,
+      "detail": "Null title rows: 0."
+    },
+    {
+      "check": "summary_length",
+      "passed": true,
+      "detail": "Rows with summary shorter than 40 chars: 0."
+    },
+    {
+      "check": "freshness_threshold",
+      "passed": true,
+      "detail": "Rows older than 180 days: 0."
+    }
+  ]
+}

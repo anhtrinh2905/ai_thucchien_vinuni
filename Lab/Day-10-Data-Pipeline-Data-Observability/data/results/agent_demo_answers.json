@@ -1,0 +1,10 @@
+[
+  {
+    "question": "What is the main topic of the paper 'Operationalizing Reliability Gaps in Large Language Models: A Semi-Systematic Evidence Map of Reasoning, Factuality, Evaluation, and Retrieval-Augmented Generation'?",
+    "answer": "The main topic of the paper is to **identify and operationalize reliability gaps in large language models (LLMs) through a semi-systematic evidence map.** Instead of treating reliability as a single capability score, the authors approach it as a **pipeline-level evaluation construct** and synthesize findings from 77 studies across four linked dimensions:\n\n1. **Reasoning faithfulness** \u2013 whether reasoning traces genuinely reflect the model\u2019s decision process.\n2. **Factual grounding** \u2013 the distinction between answer accuracy and source-supported truth.\n3. **Evaluation validity** \u2013 how benchmark scores can be contaminated, saturated, or sensitive to protocol variation.\n4. **Evidence-use reliability in Retrieval-Augmented Generation (RAG)** \u2013 whether retrieved evidence is actually used faithfully during generation.\n\nThe paper contributes an **operational reliability-gap framework** and a set of testable propositions for evaluating interactions among reasoning, factuality, evaluation trust, evidence use, lateral reasoning, and equitable multilingual reliability."
+  },
+  {
+    "question": "Who authored the paper 'Operationalizing Reliability Gaps in Large Language Models: A Semi-Systematic Evidence Map of Reasoning, Factuality, Evaluation, and Retrieval-Augmented Generation'?",
+    "answer": "The paper **\u201cOperationalizing Reliability Gaps in Large Language Models: A Semi\u2011Systematic Evidence Map of Reasoning, Factuality, Evaluation, and Retrieval\u2011Augmented Generation\u201d** was authored by **Kushal Budha** and **Nikesh Lagun**."
+  }
+]

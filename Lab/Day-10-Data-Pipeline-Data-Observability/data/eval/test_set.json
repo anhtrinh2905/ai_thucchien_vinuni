@@ -1,0 +1,290 @@
+[
+  {
+    "id": "q1",
+    "question_type": "summary",
+    "question": "What is the main topic of the paper 'Operationalizing Reliability Gaps in Large Language Models: A Semi-Systematic Evidence Map of Reasoning, Factuality, Evaluation, and Retrieval-Augmented Generation'?",
+    "ground_truth": "Abstract Large language models (LLMs) increasingly support reasoning, question answering, decision support, and retrieval-augmented knowledge work.",
+    "ground_truth_doc_ids": [
+      "10.21203/rs.3.rs-9882260/v1"
+    ]
+  },
+  {
+    "id": "q2",
+    "question_type": "authors",
+    "question": "Who authored the paper 'Operationalizing Reliability Gaps in Large Language Models: A Semi-Systematic Evidence Map of Reasoning, Factuality, Evaluation, and Retrieval-Augmented Generation'?",
+    "ground_truth": "Kushal Budha, Nikesh Lagun",
+    "ground_truth_doc_ids": [
+      "10.21203/rs.3.rs-9882260/v1"
+    ]
+  },
+  {
+    "id": "q3",
+    "question_type": "date",
+    "question": "When was the paper 'Operationalizing Reliability Gaps in Large Language Models: A Semi-Systematic Evidence Map of Reasoning, Factuality, Evaluation, and Retrieval-Augmented Generation' published?",
+    "ground_truth": "2026-06-02",
+    "ground_truth_doc_ids": [
+      "10.21203/rs.3.rs-9882260/v1"
+    ]
+  },
+  {
+    "id": "q4",
+    "question_type": "categories",
+    "question": "What categories apply to the paper 'Operationalizing Reliability Gaps in Large Language Models: A Semi-Systematic Evidence Map of Reasoning, Factuality, Evaluation, and Retrieval-Augmented Generation'?",
+    "ground_truth": "uncategorized",
+    "ground_truth_doc_ids": [
+      "10.21203/rs.3.rs-9882260/v1"
+    ]
+  },
+  {
+    "id": "q5",
+    "question_type": "summary",
+    "question": "What is the main topic of the paper 'Hybrid Graph Neural Network and Large Language Model Framework for Robust Knowledge Graph Question Answering via Retrieval-Augmented Generation'?",
+    "ground_truth": "Knowledge graphs (KGs) hold facts about the world as connected triples, and they have become a backbone for any system that needs to reason over linked information.",
+    "ground_truth_doc_ids": [
+      "10.22214/ijraset.2026.82233"
+    ]
+  },
+  {
+    "id": "q6",
+    "question_type": "authors",
+    "question": "Who authored the paper 'Hybrid Graph Neural Network and Large Language Model Framework for Robust Knowledge Graph Question Answering via Retrieval-Augmented Generation'?",
+    "ground_truth": "Sohail Khan",
+    "ground_truth_doc_ids": [
+      "10.22214/ijraset.2026.82233"
+    ]
+  },
+  {
+    "id": "q7",
+    "question_type": "date",
+    "question": "When was the paper 'Hybrid Graph Neural Network and Large Language Model Framework for Robust Knowledge Graph Question Answering via Retrieval-Augmented Generation' published?",
+    "ground_truth": "2026-05-31",
+    "ground_truth_doc_ids": [
+      "10.22214/ijraset.2026.82233"
+    ]
+  },
+  {
+    "id": "q8",
+    "question_type": "categories",
+    "question": "What categories apply to the paper 'Hybrid Graph Neural Network and Large Language Model Framework for Robust Knowledge Graph Question Answering via Retrieval-Augmented Generation'?",
+    "ground_truth": "uncategorized",
+    "ground_truth_doc_ids": [
+      "10.22214/ijraset.2026.82233"
+    ]
+  },
+  {
+    "id": "q9",
+    "question_type": "summary",
+    "question": "What is the main topic of the paper 'An Exploratory Study of Agentic Retrieval Augmented Generation for Mental Health Oriented Language Models'?",
+    "ground_truth": "Mental health conditions affect over one billion individuals globally and remain challenging to assess accurately due to fragmented clinical data and subjective evaluation methods.",
+    "ground_truth_doc_ids": [
+      "10.32473/flairs.39.1.141782"
+    ]
+  },
+  {
+    "id": "q10",
+    "question_type": "authors",
+    "question": "Who authored the paper 'An Exploratory Study of Agentic Retrieval Augmented Generation for Mental Health Oriented Language Models'?",
+    "ground_truth": "Khoa Pham, Jiacheng Li, Hassan S. Al Khatib, Shahram Rahimi, Noorbakhsh Amiri Golilarz, Andy Perkins",
+    "ground_truth_doc_ids": [
+      "10.32473/flairs.39.1.141782"
+    ]
+  },
+  {
+    "id": "q11",
+    "question_type": "date",
+    "question": "When was the paper 'An Exploratory Study of Agentic Retrieval Augmented Generation for Mental Health Oriented Language Models' published?",
+    "ground_truth": "2026-05-06",
+    "ground_truth_doc_ids": [
+      "10.32473/flairs.39.1.141782"
+    ]
+  },
+  {
+    "id": "q12",
+    "question_type": "categories",
+    "question": "What categories apply to the paper 'An Exploratory Study of Agentic Retrieval Augmented Generation for Mental Health Oriented Language Models'?",
+    "ground_truth": "uncategorized",
+    "ground_truth_doc_ids": [
+      "10.32473/flairs.39.1.141782"
+    ]
+  },
+  {
+    "id": "q13",
+    "question_type": "summary",
+    "question": "What is the main topic of the paper 'Retrieval-Augmented Large Language Model Agents for Automated Scientific Literature Review Generation'?",
+    "ground_truth": "This study investigates a method that integrates retrieval-augmented mechanisms into large language model agents for scientific literature review generation.",
+    "ground_truth_doc_ids": [
+      "10.20944/preprints202604.0339.v1"
+    ]
+  },
+  {
+    "id": "q14",
+    "question_type": "authors",
+    "question": "Who authored the paper 'Retrieval-Augmented Large Language Model Agents for Automated Scientific Literature Review Generation'?",
+    "ground_truth": "Ruotong Wang, Nyutian Long, Shunqi Liu, Yuxi Wang, Zhen Qi, Huajun Zhang",
+    "ground_truth_doc_ids": [
+      "10.20944/preprints202604.0339.v1"
+    ]
+  },
+  {
+    "id": "q15",
+    "question_type": "date",
+    "question": "When was the paper 'Retrieval-Augmented Large Language Model Agents for Automated Scientific Literature Review Generation' published?",
+    "ground_truth": "2026-04-06",
+    "ground_truth_doc_ids": [
+      "10.20944/preprints202604.0339.v1"
+    ]
+  },
+  {
+    "id": "q16",
+    "question_type": "categories",
+    "question": "What categories apply to the paper 'Retrieval-Augmented Large Language Model Agents for Automated Scientific Literature Review Generation'?",
+    "ground_truth": "uncategorized",
+    "ground_truth_doc_ids": [
+      "10.20944/preprints202604.0339.v1"
+    ]
+  },
+  {
+    "id": "q17",
+    "question_type": "summary",
+    "question": "What is the main topic of the paper 'Pioneering agentic retrieval-augmented generation in software quality: a novel framework for code smell detection <i>via</i> dynamic retrieval'?",
+    "ground_truth": "Code smells\u2014subtle indicators of poor design choices\u2014pose significant challenges to software maintainability and readability, particularly in dynamic languages such as Python.",
+    "ground_truth_doc_ids": [
+      "10.7717/peerj-cs.3642"
+    ]
+  },
+  {
+    "id": "q18",
+    "question_type": "authors",
+    "question": "Who authored the paper 'Pioneering agentic retrieval-augmented generation in software quality: a novel framework for code smell detection <i>via</i> dynamic retrieval'?",
+    "ground_truth": "Bushra Aljohani, Abdulmajeed Aljuhani",
+    "ground_truth_doc_ids": [
+      "10.7717/peerj-cs.3642"
+    ]
+  },
+  {
+    "id": "q19",
+    "question_type": "date",
+    "question": "When was the paper 'Pioneering agentic retrieval-augmented generation in software quality: a novel framework for code smell detection <i>via</i> dynamic retrieval' published?",
+    "ground_truth": "2026-03-04",
+    "ground_truth_doc_ids": [
+      "10.7717/peerj-cs.3642"
+    ]
+  },
+  {
+    "id": "q20",
+    "question_type": "categories",
+    "question": "What categories apply to the paper 'Pioneering agentic retrieval-augmented generation in software quality: a novel framework for code smell detection <i>via</i> dynamic retrieval'?",
+    "ground_truth": "uncategorized",
+    "ground_truth_doc_ids": [
+      "10.7717/peerj-cs.3642"
+    ]
+  },
+  {
+    "id": "q21",
+    "question_type": "summary",
+    "question": "What is the main topic of the paper 'Implementation of Retrieval-Augmented Generation Method on Large Language Model for Development of Campus Service and Information Chatbot'?",
+    "ground_truth": "Large language models have the potential to improve the quality of information services in higher education environments through responsive and natural interactions.",
+    "ground_truth_doc_ids": [
+      "10.35314/3y9hy151"
+    ]
+  },
+  {
+    "id": "q22",
+    "question_type": "authors",
+    "question": "Who authored the paper 'Implementation of Retrieval-Augmented Generation Method on Large Language Model for Development of Campus Service and Information Chatbot'?",
+    "ground_truth": "Muhammad Dzaki Salman, Rahmaddeni, Torkis Nasution, Susanti",
+    "ground_truth_doc_ids": [
+      "10.35314/3y9hy151"
+    ]
+  },
+  {
+    "id": "q23",
+    "question_type": "date",
+    "question": "When was the paper 'Implementation of Retrieval-Augmented Generation Method on Large Language Model for Development of Campus Service and Information Chatbot' published?",
+    "ground_truth": "2026-02-26",
+    "ground_truth_doc_ids": [
+      "10.35314/3y9hy151"
+    ]
+  },
+  {
+    "id": "q24",
+    "question_type": "categories",
+    "question": "What categories apply to the paper 'Implementation of Retrieval-Augmented Generation Method on Large Language Model for Development of Campus Service and Information Chatbot'?",
+    "ground_truth": "uncategorized",
+    "ground_truth_doc_ids": [
+      "10.35314/3y9hy151"
+    ]
+  },
+  {
+    "id": "q25",
+    "question_type": "summary",
+    "question": "What is the main topic of the paper 'Empowering farmers with artificial intelligence: a retrieval-augmented generation based large language model advisory framework'?",
+    "ground_truth": "This study presents a retrieval augmented generation (RAG) based system designed to provide farmers with expert agricultural advisory services.",
+    "ground_truth_doc_ids": [
+      "10.4081/jae.2026.1908"
+    ]
+  },
+  {
+    "id": "q26",
+    "question_type": "authors",
+    "question": "Who authored the paper 'Empowering farmers with artificial intelligence: a retrieval-augmented generation based large language model advisory framework'?",
+    "ground_truth": "Shreeram Sawant, Rahul Nair, Siddharth Hariharan",
+    "ground_truth_doc_ids": [
+      "10.4081/jae.2026.1908"
+    ]
+  },
+  {
+    "id": "q27",
+    "question_type": "date",
+    "question": "When was the paper 'Empowering farmers with artificial intelligence: a retrieval-augmented generation based large language model advisory framework' published?",
+    "ground_truth": "2026-01-27",
+    "ground_truth_doc_ids": [
+      "10.4081/jae.2026.1908"
+    ]
+  },
+  {
+    "id": "q28",
+    "question_type": "categories",
+    "question": "What categories apply to the paper 'Empowering farmers with artificial intelligence: a retrieval-augmented generation based large language model advisory framework'?",
+    "ground_truth": "uncategorized",
+    "ground_truth_doc_ids": [
+      "10.4081/jae.2026.1908"
+    ]
+  },
+  {
+    "id": "q29",
+    "question_type": "summary",
+    "question": "What is the main topic of the paper 'A Survey of Agentic GraphRAG: From Retrieval-augmented Generation to Graph-native Agents'?",
+    "ground_truth": "&lt;div&gt; This survey provides a comprehensive analysis of Agentic GraphRAG, an emerging paradigm that integrates Graph-based Retrieval-Augmented Generation (RAG) with Agentic RAG.",
+    "ground_truth_doc_ids": [
+      "10.2139/ssrn.6713979"
+    ]
+  },
+  {
+    "id": "q30",
+    "question_type": "authors",
+    "question": "Who authored the paper 'A Survey of Agentic GraphRAG: From Retrieval-augmented Generation to Graph-native Agents'?",
+    "ground_truth": "Zihan Chen, Lei Zheng, Di Zhu",
+    "ground_truth_doc_ids": [
+      "10.2139/ssrn.6713979"
+    ]
+  },
+  {
+    "id": "q31",
+    "question_type": "date",
+    "question": "When was the paper 'A Survey of Agentic GraphRAG: From Retrieval-augmented Generation to Graph-native Agents' published?",
+    "ground_truth": "2026",
+    "ground_truth_doc_ids": [
+      "10.2139/ssrn.6713979"
+    ]
+  },
+  {
+    "id": "q32",
+    "question_type": "categories",
+    "question": "What categories apply to the paper 'A Survey of Agentic GraphRAG: From Retrieval-augmented Generation to Graph-native Agents'?",
+    "ground_truth": "uncategorized",
+    "ground_truth_doc_ids": [
+      "10.2139/ssrn.6713979"
+    ]
+  }
+]
