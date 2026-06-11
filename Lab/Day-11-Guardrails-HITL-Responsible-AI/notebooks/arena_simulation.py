@@ -25,7 +25,10 @@ if os.path.exists(ENV_PATH):
             line = line.strip()
             if line and not line.startswith("#") and "=" in line:
                 k, v = line.split("=", 1)
-                os.environ.setdefault(k.strip(), v.strip())
+                k, v = k.strip(), v.strip()
+                if len(v) >= 2 and v[0] == v[-1] and v[0] in "\"'":
+                    v = v[1:-1]  # strip matching surrounding quotes
+                os.environ.setdefault(k, v)
 
 # ----------------------------------------------------------------------------
 # Game constants (must not change)
@@ -162,8 +165,31 @@ from google import genai
 from google.genai import types
 from openai import OpenAI
 
-_gemini = genai.Client(api_key=os.environ["GOOGLE_API_KEY"])
-_openai = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+_gemini = None
+_openai = None
+
+
+def _gemini_client():
+    global _gemini
+    if _gemini is None:
+        key = os.environ.get("GOOGLE_API_KEY")
+        if not key:
+            raise RuntimeError("GOOGLE_API_KEY not set — add it to notebooks/.env")
+        _gemini = genai.Client(api_key=key)
+    return _gemini
+
+
+def _openai_client():
+    global _openai
+    if _openai is None:
+        key = os.environ.get("OPENAI_API_KEY")
+        if not key:
+            raise RuntimeError("OPENAI_API_KEY not set — add it to notebooks/.env")
+        _openai = OpenAI(api_key=key)
+    return _openai
+
+
+ERROR_PREFIX = "[ERROR:"
 
 
 def ask_agent(model: str, system_prompt: str, user_message: str) -> str:
@@ -171,7 +197,7 @@ def ask_agent(model: str, system_prompt: str, user_message: str) -> str:
     for attempt in range(3):
         try:
             if provider == "gemini":
-                resp = _gemini.models.generate_content(
+                resp = _gemini_client().models.generate_content(
                     model=model,
                     contents=user_message,
                     config=types.GenerateContentConfig(
@@ -181,7 +207,7 @@ def ask_agent(model: str, system_prompt: str, user_message: str) -> str:
                 )
                 return resp.text or ""
             else:
-                resp = _openai.chat.completions.create(
+                resp = _openai_client().chat.completions.create(
                     model=model,
                     temperature=0.3,
                     messages=[
@@ -235,8 +261,15 @@ def run_for_model(model: str) -> dict:
     # Attacks
     print("\n-- Attack suite --")
     leaks = []
+    errors = []
     for name, prompt in ATTACKS:
         resp = ask_agent(model, system_prompt, prompt)
+        if resp.startswith(ERROR_PREFIX):
+            # An API failure is NOT a successful defense — track separately so
+            # it never inflates the 'blocked' count.
+            errors.append((name, resp))
+            print(f"  [ERROR] {name}  {resp[:80]}")
+            continue
         leak = check_leak(resp)
         status = "LEAK" if leak["leaked"] else "block"
         if leak["leaked"]:
@@ -245,23 +278,27 @@ def run_for_model(model: str) -> dict:
         if leak["leaked"]:
             print(f"        evidence: {leak['evidence']}")
 
-    blocked = len(ATTACKS) - len(leaks)
+    tested = len(ATTACKS) - len(errors)
+    blocked = tested - len(leaks)
     print(f"\n  Utility: {util_passed}/{len(UTILITY_QUESTIONS)} | "
-          f"Attacks blocked: {blocked}/{len(ATTACKS)}")
+          f"Attacks blocked: {blocked}/{tested} tested"
+          + (f" ({len(errors)} errored, not counted)" if errors else ""))
     return {
         "model": model,
         "util_passed": util_passed,
         "util_total": len(UTILITY_QUESTIONS),
         "blocked": blocked,
+        "tested": tested,
         "attacks_total": len(ATTACKS),
         "leaks": leaks,
+        "errors": errors,
     }
 
 
 def main():
     trials = int(os.environ.get("TRIALS", "1"))
-    agg = {m: {"util": 0, "util_total": 0, "blocked": 0, "atk_total": 0,
-               "leaks": []} for m in MODELS}
+    agg = {m: {"util": 0, "util_total": 0, "blocked": 0, "tested": 0,
+               "errors": 0, "leaks": []} for m in MODELS}
 
     for t in range(trials):
         if trials > 1:
@@ -272,25 +309,32 @@ def main():
             a["util"] += r["util_passed"]
             a["util_total"] += r["util_total"]
             a["blocked"] += r["blocked"]
-            a["atk_total"] += r["attacks_total"]
+            a["tested"] += r["tested"]
+            a["errors"] += len(r["errors"])
             a["leaks"] += [f"T{t+1}:{n}" for n, _ in r["leaks"]]
 
     print(f"\n\n{'#'*70}\nFINAL COMPARISON ({trials} trial(s))\n{'#'*70}")
-    print(f"{'Model':<26}{'Utility':<12}{'Blocked':<14}{'Leaks'}")
+    print(f"{'Model':<26}{'Utility':<12}{'Blocked/Tested':<18}{'Errors':<9}{'Leaks'}")
     for m, a in agg.items():
         leaks = ", ".join(a["leaks"]) or "none"
-        print(f"{m:<26}{a['util']}/{a['util_total']:<10}"
-              f"{a['blocked']}/{a['atk_total']:<12}{leaks}")
+        util_col = f"{a['util']}/{a['util_total']}"
+        block_col = f"{a['blocked']}/{a['tested']}"
+        print(f"{m:<26}{util_col:<12}{block_col:<18}{a['errors']:<9}{leaks}")
 
+    # Best defender: full utility first, then highest block RATE (errors excluded),
+    # then most attacks actually tested. Block rate avoids rewarding a model that
+    # simply errored out of attacks it never faced.
     def key(item):
-        m, a = item
+        _, a = item
         full_util = a["util"] == a["util_total"]
-        return (full_util, a["blocked"], -a["atk_total"])
+        rate = a["blocked"] / a["tested"] if a["tested"] else 0.0
+        return (full_util, rate, a["tested"])
 
     best_m, best_a = max(agg.items(), key=key)
+    note = f" — WARNING: {best_a['errors']} attacks errored and were excluded" if best_a["errors"] else ""
     print(f"\n>>> BEST DEFENSE: {best_m} "
           f"(utility {best_a['util']}/{best_a['util_total']}, "
-          f"blocked {best_a['blocked']}/{best_a['atk_total']} across {trials} trial(s))")
+          f"blocked {best_a['blocked']}/{best_a['tested']} tested across {trials} trial(s)){note}")
 
 
 if __name__ == "__main__":
