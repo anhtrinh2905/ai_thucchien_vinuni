@@ -1,10 +1,12 @@
 """
 Lab 11 — Helper Utilities
 """
+import asyncio
+
 from google.genai import types
 
 
-async def chat_with_agent(agent, runner, user_message: str, session_id=None):
+async def chat_with_agent(agent, runner, user_message: str, session_id=None, max_retries=3):
     """Send a message to the agent and get the response.
 
     Args:
@@ -12,6 +14,7 @@ async def chat_with_agent(agent, runner, user_message: str, session_id=None):
         runner: The InMemoryRunner instance
         user_message: Plain text message to send
         session_id: Optional session ID to continue a conversation
+        max_retries: Retry count for transient API errors (503/429)
 
     Returns:
         Tuple of (response_text, session)
@@ -43,13 +46,26 @@ async def chat_with_agent(agent, runner, user_message: str, session_id=None):
         parts=[types.Part.from_text(text=user_message)],
     )
 
-    final_response = ""
-    async for event in runner.run_async(
-        user_id=user_id, session_id=session.id, new_message=content
-    ):
-        if hasattr(event, "content") and event.content and event.content.parts:
-            for part in event.content.parts:
-                if hasattr(part, "text") and part.text:
-                    final_response += part.text
+    last_error = None
+    for attempt in range(max_retries):
+        final_response = ""
+        try:
+            async for event in runner.run_async(
+                user_id=user_id, session_id=session.id, new_message=content
+            ):
+                if hasattr(event, "content") and event.content and event.content.parts:
+                    for part in event.content.parts:
+                        if hasattr(part, "text") and part.text:
+                            final_response += part.text
+            return final_response, session
+        except Exception as e:
+            last_error = e
+            err = str(e).lower()
+            if attempt < max_retries - 1 and (
+                "503" in err or "429" in err or "unavailable" in err or "resource_exhausted" in err
+            ):
+                await asyncio.sleep(2 ** attempt)
+                continue
+            raise
 
-    return final_response, session
+    raise last_error

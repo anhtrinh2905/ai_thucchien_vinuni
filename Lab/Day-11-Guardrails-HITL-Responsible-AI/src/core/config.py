@@ -2,10 +2,21 @@
 Lab 11 — Configuration & API Key Setup
 """
 import os
+from pathlib import Path
 
 
 def setup_api_key():
-    """Load Google API key from environment or prompt."""
+    """Load Google API key from notebooks/.env, environment, or prompt."""
+    if "GOOGLE_API_KEY" not in os.environ:
+        env_path = Path(__file__).resolve().parent.parent.parent / "notebooks" / ".env"
+        if env_path.exists():
+            for line in env_path.read_text().splitlines():
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    key, _, value = line.partition("=")
+                    if key.strip() == "GOOGLE_API_KEY":
+                        os.environ["GOOGLE_API_KEY"] = value.strip().strip('"').strip("'")
+                        break
     if "GOOGLE_API_KEY" not in os.environ:
         os.environ["GOOGLE_API_KEY"] = input("Enter Google API Key: ")
     os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "0"
