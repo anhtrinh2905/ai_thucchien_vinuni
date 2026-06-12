@@ -8,10 +8,43 @@ Mục tiêu: Tránh bill bất ngờ từ LLM API.
 
 Trong production: lưu trong Redis/DB, không phải in-memory.
 """
+import os
 import time
 import logging
+from datetime import datetime
 from dataclasses import dataclass, field
 from fastapi import HTTPException
+
+try:
+    import redis
+except ImportError:
+    redis = None
+
+MONTHLY_BUDGET_USD = float(os.getenv("MONTHLY_BUDGET_USD", "10.0"))
+REDIS_URL = os.getenv("REDIS_URL", "")
+
+
+def check_budget_redis(user_id: str, estimated_cost: float) -> bool:
+    """
+    Redis-backed monthly budget check (Exercise 4.4).
+
+    Return True nếu còn budget, False nếu vượt.
+    Mỗi user có budget $10/tháng, reset đầu tháng.
+    """
+    if not redis or not REDIS_URL:
+        return True
+
+    r = redis.from_url(REDIS_URL, decode_responses=True)
+    month_key = datetime.now().strftime("%Y-%m")
+    key = f"budget:{user_id}:{month_key}"
+
+    current = float(r.get(key) or 0)
+    if current + estimated_cost > MONTHLY_BUDGET_USD:
+        return False
+
+    r.incrbyfloat(key, estimated_cost)
+    r.expire(key, 32 * 24 * 3600)
+    return True
 
 logger = logging.getLogger(__name__)
 

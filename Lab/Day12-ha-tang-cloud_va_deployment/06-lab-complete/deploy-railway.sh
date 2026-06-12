@@ -30,4 +30,4 @@ railway up --service agent --detach
 
 echo ""
 echo "Xong! Chạy: railway domain"
-echo "Test: curl https://YOUR-DOMAIN/health"
+echo "Test: mở https://YOUR-DOMAIN/"

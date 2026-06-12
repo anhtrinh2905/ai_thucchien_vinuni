@@ -9,3 +9,5 @@ venv/
 *.md
 tests/
 .DS_Store
+__MACOSX/
+app/src.zip
