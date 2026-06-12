@@ -4,11 +4,29 @@ import logging
 from dataclasses import dataclass, field
 
 
+def resolve_web_port() -> int:
+    """
+    Web listen port. Railway users sometimes reference Redis shared vars
+    which leak PORT=6379 — ignore that and use the Railway web default.
+    """
+    raw = os.getenv("PORT", "8000")
+    try:
+        port = int(raw)
+    except ValueError:
+        return 8000
+    if port == 6379:
+        logging.getLogger(__name__).warning(
+            "PORT=6379 ignored (Redis shared var leak). Using 8080."
+        )
+        return 8080
+    return port
+
+
 @dataclass
 class Settings:
     # Server
     host: str = field(default_factory=lambda: os.getenv("HOST", "0.0.0.0"))
-    port: int = field(default_factory=lambda: int(os.getenv("PORT", "8000")))
+    port: int = field(default_factory=resolve_web_port)
     environment: str = field(default_factory=lambda: os.getenv("ENVIRONMENT", "development"))
     debug: bool = field(default_factory=lambda: os.getenv("DEBUG", "false").lower() == "true")
 
@@ -29,10 +47,13 @@ class Settings:
 
     # Rate limiting
     rate_limit_per_minute: int = field(
-        default_factory=lambda: int(os.getenv("RATE_LIMIT_PER_MINUTE", "20"))
+        default_factory=lambda: int(os.getenv("RATE_LIMIT_PER_MINUTE", "10"))
     )
 
     # Budget
+    monthly_budget_usd: float = field(
+        default_factory=lambda: float(os.getenv("MONTHLY_BUDGET_USD", "10.0"))
+    )
     daily_budget_usd: float = field(
         default_factory=lambda: float(os.getenv("DAILY_BUDGET_USD", "5.0"))
     )
