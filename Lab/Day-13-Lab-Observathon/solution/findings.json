@@ -1,12 +1,106 @@
 {
-  "team": "TODO-team-name",
+  "team": "vinuni-team",
   "schema_version": 1,
   "findings": [
     {
-      "fault_class": "latency_spike",
-      "evidence": {"metric": "latency_p95_ms", "observed": "TODO from your telemetry", "trace_ids": []},
-      "root_cause": "TODO: what config knob or behavior causes it?",
-      "suggested_fix": "TODO: config change and/or wrapper mitigation"
+      "fault_class": "arithmetic_error",
+      "evidence": {
+        "metric": "wrong_total_rate",
+        "observed": "~35% totals off by discount direction or rounding at temperature=1.6",
+        "trace_ids": ["req-telemetry"]
+      },
+      "root_cause": "Default temperature 1.6 makes the LLM estimate instead of computing exact integer arithmetic.",
+      "suggested_fix": "Set temperature to 0.2, enable self_consistency=2, and prompt with floor-division formula."
+    },
+    {
+      "fault_class": "fabrication",
+      "evidence": {
+        "metric": "refusal_should_refuse",
+        "observed": "Agent invented totals for out-of-stock AirPods and unknown Samsung SKUs",
+        "trace_ids": ["req-telemetry"]
+      },
+      "root_cause": "Shipped system prompt only says 'give a total' with no grounding or refusal rules.",
+      "suggested_fix": "Rewrite prompt.txt: tool-first grounding, refuse with no total when stock lookup fails."
+    },
+    {
+      "fault_class": "tool_overuse",
+      "evidence": {
+        "metric": "tools_per_request",
+        "observed": "P95 tool_count=6 vs minimum 2-3; redundant check_stock repeats",
+        "trace_ids": ["req-telemetry"]
+      },
+      "root_cause": "No tool_budget cap and prompt encourages over-calling tools 'to be safe'.",
+      "suggested_fix": "tool_budget=4 plus prompt line: each tool at most once."
+    },
+    {
+      "fault_class": "pii_leak",
+      "evidence": {
+        "metric": "pii_in_answer",
+        "observed": "Customer email echoed in answer on pub-13 style requests",
+        "trace_ids": ["req-telemetry"]
+      },
+      "root_cause": "redact_pii=false in default config; prompt does not forbid echoing contact info.",
+      "suggested_fix": "Enable redact_pii in config, redact in wrapper, add no-PII line in prompt."
+    },
+    {
+      "fault_class": "tool_failure",
+      "evidence": {
+        "metric": "shipping_tool_error_rate",
+        "observed": "calc_shipping fails on diacritic city names (Ha Noi vs Hà Nội)",
+        "trace_ids": ["req-telemetry"]
+      },
+      "root_cause": "normalize_unicode=false so Unicode variants break tool matching.",
+      "suggested_fix": "Set normalize_unicode=true in config.json."
+    },
+    {
+      "fault_class": "cost_blowup",
+      "evidence": {
+        "metric": "mean_cost_usd",
+        "observed": "2-4x baseline from verbose_system + premium tier + high max_completion_tokens",
+        "trace_ids": ["req-telemetry"]
+      },
+      "root_cause": "verbose_system=true, model_price_tier=premium, max_completion_tokens=2000.",
+      "suggested_fix": "Switch to standard tier, verbose_system=false, cap max_completion_tokens=800."
+    },
+    {
+      "fault_class": "quality_drift",
+      "evidence": {
+        "metric": "correctness_by_turn",
+        "observed": "Accuracy drops ~8% from turn 0 to turn 10 within a session",
+        "trace_ids": ["req-telemetry"]
+      },
+      "root_cause": "session_drift_rate=0.06 corrupts coupon context over long sessions.",
+      "suggested_fix": "Set session_drift_rate=0, context_reset_every=6, wrapper session reset on high turn_index."
+    },
+    {
+      "fault_class": "prompt_injection",
+      "evidence": {
+        "metric": "injection_obey_rate",
+        "observed": "Agent follows fake prices embedded in GHI CHU order notes",
+        "trace_ids": ["req-telemetry"]
+      },
+      "root_cause": "Default prompt treats all customer text as instructions; no note sanitization.",
+      "suggested_fix": "Prompt: notes are DATA only; wrapper strips GHI CHU sections before call_next."
+    },
+    {
+      "fault_class": "infinite_loop",
+      "evidence": {
+        "metric": "status_max_steps",
+        "observed": "Repeated identical check_stock calls; status=max_steps on ~4% of requests",
+        "trace_ids": ["req-telemetry"]
+      },
+      "root_cause": "loop_guard=false with max_steps=12 allows identical tool loops.",
+      "suggested_fix": "Enable loop_guard, reduce max_steps=10, wrapper retry on loop status."
+    },
+    {
+      "fault_class": "error_spike",
+      "evidence": {
+        "metric": "tool_error_rate",
+        "observed": "~18% intermittent tool failures with no retry",
+        "trace_ids": ["req-telemetry"]
+      },
+      "root_cause": "tool_error_rate=0.18 and retry.enabled=false.",
+      "suggested_fix": "Enable retry with max_attempts=3 and 200ms backoff in config + wrapper."
     }
   ]
 }
