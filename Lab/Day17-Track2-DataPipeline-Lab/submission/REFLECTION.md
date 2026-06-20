@@ -19,4 +19,10 @@ Answer briefly, in your own words. This is graded on reasoning, not length.
    answers well that flat chunk retrieval (`embed.py`) would struggle with, and
    one where the graph is overkill.
 
-_Write your answers below._
+1. **Flywheel.** Bước dễ hỏng nhất là gán `split='eval'` khi flatten trace → Bronze. Nếu nhãn sai, prompt eval lọt vào tập train mà pipeline vẫn chạy bình thường. Phát hiện bằng audit: so khớp prompt trong `preference_pairs.jsonl` với `eval_golden.jsonl`, và theo dõi eval tăng đột biến trong khi production không cải thiện.
+
+2. **Decontamination.** Bỏ bước này, model DPO học trùng prompt eval → benchmark đánh giá cao giả (memorization). Metric eval “đẹp” nhưng agent vẫn sai trên câu hỏi mới tương tự.
+
+3. **Point-in-time.** Feature `lifetime_spend` hoặc “số đơn 30 ngày qua” nếu join giá trị mới nhất thay vì ASOF sẽ nhìn thấy chi tiêu tương lai — model offline tốt, deploy thì thiếu dữ liệu thật.
+
+4. **Graph vs vector.** KG trả lời tốt câu multi-hop: “Widget ship từ đâu?” (widget → accessory → Hanoi). Vector đủ cho câu 1-hop: “Widget return trong bao lâu?” — một chunk đã chứa đủ fact.
