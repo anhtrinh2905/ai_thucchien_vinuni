@@ -1,0 +1,141 @@
+{
+  "aggregate": {
+    "faithfulness": 0.875,
+    "answer_relevancy": 0.7215808428685822,
+    "context_precision": 0.9333333332883331,
+    "context_recall": 0.825
+  },
+  "num_questions": 20,
+  "failures": [
+    {
+      "question": "Một nhân viên Senior có 9 năm thâm niên được nghỉ bao nhiêu ngày phép năm và lương trong khoảng nào?",
+      "worst_metric": "faithfulness",
+      "score": 0.33333333332291665,
+      "metrics": {
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.8333333332916666,
+        "context_recall": 0.5
+      },
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature"
+    },
+    {
+      "question": "Muốn mua thiết bị trị giá 55 triệu cần ai phê duyệt?",
+      "worst_metric": "context_recall",
+      "score": 0.6612744692105255,
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8117645435504354,
+        "context_precision": 0.8333333332916666,
+        "context_recall": 0.0
+      },
+      "diagnosis": "Missing relevant chunks",
+      "suggested_fix": "Improve chunking or add BM25"
+    },
+    {
+      "question": "Nhân viên thử việc có được hưởng bảo hiểm sức khỏe PVI không?",
+      "worst_metric": "answer_relevancy",
+      "score": 0.7499999999916667,
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.9999999999666667,
+        "context_recall": 1.0
+      },
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template"
+    },
+    {
+      "question": "Lương thử việc của nhân viên Junior mức cao nhất là bao nhiêu?",
+      "worst_metric": "answer_relevancy",
+      "score": 0.7499999999916667,
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.9999999999666667,
+        "context_recall": 1.0
+      },
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template"
+    },
+    {
+      "question": "Nhân viên tạm ứng 15 triệu, sau 20 ngày mới thanh toán. Bị phạt bao nhiêu?",
+      "worst_metric": "faithfulness",
+      "score": 0.7826354207533242,
+      "metrics": {
+        "faithfulness": 0.3333333333333333,
+        "answer_relevancy": 0.7972083497132963,
+        "context_precision": 0.9999999999666667,
+        "context_recall": 1.0
+      },
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature"
+    },
+    {
+      "question": "Mentor và buddy của nhân viên mới có thể là cùng một người không? Quản lý trực tiếp có thể làm mentor không?",
+      "worst_metric": "faithfulness",
+      "score": 0.8128410687759752,
+      "metrics": {
+        "faithfulness": 0.6666666666666666,
+        "answer_relevancy": 0.9180309418039009,
+        "context_precision": 0.9999999999666667,
+        "context_recall": 0.6666666666666666
+      },
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature"
+    },
+    {
+      "question": "Nghỉ phép không lương 20 ngày cần ai phê duyệt?",
+      "worst_metric": "context_recall",
+      "score": 0.8196870108005744,
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7787480433022976,
+        "context_precision": 0.9999999999,
+        "context_recall": 0.5
+      },
+      "diagnosis": "Missing relevant chunks",
+      "suggested_fix": "Improve chunking or add BM25"
+    },
+    {
+      "question": "Nhân viên được tài trợ khóa học 25 triệu, nghỉ việc sau 8 tháng hoàn thành khóa học. Phải hoàn trả bao nhiêu?",
+      "worst_metric": "faithfulness",
+      "score": 0.8248459430654113,
+      "metrics": {
+        "faithfulness": 0.5,
+        "answer_relevancy": 0.7993837722949784,
+        "context_precision": 0.9999999999666667,
+        "context_recall": 1.0
+      },
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature"
+    },
+    {
+      "question": "Có cần kích hoạt xác thực đa yếu tố (MFA) không?",
+      "worst_metric": "context_recall",
+      "score": 0.8488182664780076,
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8952730660120306,
+        "context_precision": 0.9999999999,
+        "context_recall": 0.5
+      },
+      "diagnosis": "Missing relevant chunks",
+      "suggested_fix": "Improve chunking or add BM25"
+    },
+    {
+      "question": "Nhân viên được nghỉ bao nhiêu ngày phép năm?",
+      "worst_metric": "context_precision",
+      "score": 0.8498885618314529,
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8162209140216451,
+        "context_precision": 0.5833333333041666,
+        "context_recall": 1.0
+      },
+      "diagnosis": "Too many irrelevant chunks",
+      "suggested_fix": "Add reranking or metadata filter"
+    }
+  ]
+}
