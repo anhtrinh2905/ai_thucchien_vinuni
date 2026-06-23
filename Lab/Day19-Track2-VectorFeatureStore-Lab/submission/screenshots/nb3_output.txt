@@ -1,0 +1,20 @@
+{'ready': True, 'n_docs': 1000}
+
+latency_ms: 15.7
+top-3 hits:
+       cloud_016  score=0.0325  Điện toán đám mây: tự động mở rộng theo lưu lượng
+       cloud_072  score=0.0323  Điện toán đám mây: tự động mở rộng theo lưu lượng
+       cloud_053  score=0.0315  Điện toán đám mây: tự động mở rộng theo lưu lượng
+
+  mode            P50      P95      P99  P99(wall)
+
+  keyword       2.0ms    3.6ms    4.1ms   2259.3ms
+
+  semantic      9.0ms   12.1ms   20.4ms   2281.8ms
+
+  hybrid       11.3ms   15.4ms   16.4ms   2292.0ms
+
+Hybrid P99 server-side: 16.4ms
+PASS — hybrid P99 < 50ms (16.4ms)
+
+API server stopped
