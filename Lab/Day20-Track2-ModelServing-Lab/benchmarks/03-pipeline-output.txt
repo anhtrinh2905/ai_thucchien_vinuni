@@ -1,0 +1,20 @@
+
+=== Why is goodput more useful than throughput? ===
+  contexts: ['n20-paged', 'n20-radix', 'n20-disagg']
+  timings : {'retrieve': 0.0, 'llm': 954.1, 'total': 954.2}
+  answer  : I couldn't find any information in the provided documents about why goodput is more useful than throughput.
+
+=== What problem does PagedAttention actually solve? ===
+  contexts: ['n20-paged', 'n20-radix', 'n20-disagg']
+  timings : {'retrieve': 0.1, 'llm': 1040.7, 'total': 1040.8}
+  answer  : PagedAttention treats KV cache like virtual memory pages, eliminating 60-80% fragmentation. 
+
+So, PagedAttention actually solves the problem of cache fragmentation in a KV cache.
+
+=== When should I think about disaggregated serving? ===
+  contexts: ['n20-disagg', 'n20-paged', 'n20-radix']
+  timings : {'retrieve': 0.0, 'llm': 2685.5, 'total': 2685.6}
+  answer  : Based on the provided documents, I couldn't find a specific answer to when you should think about disaggregated serving. However, it can be inferred that disaggregated serving might be suitable for scenarios where:
+
+- High fragmentation is present in KV caches.
+- Prefill and decode operations are co

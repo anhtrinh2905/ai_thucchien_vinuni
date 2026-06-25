@@ -1,8 +1,8 @@
 # Reflection — Top 5 Lakehouse Anti-Patterns
 
-Họ và tên: Hồ Thành Tiến
+Họ và tên: Trịnh Thị Lan Anh
 
-MSSV: ***2A202600868***
+MSSV: ***2A202600737***
 
 Anti-pattern dễ vướng nhất với team tôi: **"Overwriting instead of appending"** (ghi đè thay vì append).
 

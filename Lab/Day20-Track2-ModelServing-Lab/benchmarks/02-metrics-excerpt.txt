@@ -1,0 +1,6 @@
+llamacpp:prompt_tokens_total 1199
+llamacpp:tokens_predicted_total 2343
+llamacpp:n_decode_total 683
+llamacpp:requests_processing 0
+llamacpp:requests_deferred 0
+llamacpp:n_busy_slots_per_decode 3.86969

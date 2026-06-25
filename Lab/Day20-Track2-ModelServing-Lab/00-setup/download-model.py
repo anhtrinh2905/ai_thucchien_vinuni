@@ -32,7 +32,9 @@ TIERS: dict[str, tuple[str, str, str]] = {
         "qwen2.5-1.5b-instruct-q2_k.gguf",
     ),
     "Llama-3.2-3B-Instruct": (
-        "bartowski/Llama-3.2-3B-Instruct-GGUF",
+        # bartowski's repo has no Q2_K; unsloth ships both Q4_K_M and Q2_K
+        # under the same filenames the lab expects.
+        "unsloth/Llama-3.2-3B-Instruct-GGUF",
         "Llama-3.2-3B-Instruct-Q4_K_M.gguf",
         "Llama-3.2-3B-Instruct-Q2_K.gguf",
     ),

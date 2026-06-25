@@ -1,0 +1,22 @@
+{
+    "id": "chatcmpl-27545510-cc50-4903-ad6e-1d5ea5d9181c",
+    "object": "chat.completion",
+    "created": 1782402732,
+    "model": "local",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "content": "Goodput@SLO (Service Level Objective) refers to the actual throughput achieved by a network or system that meets its committed service level, often expressed as a percentage of the maximum possible throughput.",
+                "role": "assistant"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 45,
+        "completion_tokens": 39,
+        "total_tokens": 84
+    }
+}
