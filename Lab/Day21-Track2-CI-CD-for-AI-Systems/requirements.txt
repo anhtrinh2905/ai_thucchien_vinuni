@@ -1,0 +1,12 @@
+mlflow
+scikit-learn
+pandas
+dvc
+dvc-s3
+pathspec
+pytest
+fastapi
+uvicorn
+joblib
+boto3
+pyyaml
