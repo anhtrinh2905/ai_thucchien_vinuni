@@ -2,8 +2,8 @@
 
 **AIInAction - VinUni | Day 21**
 
-**Họ Tên:** Hồ Thành Tiến
-**MSSV:** 2A202600868
+**Họ Tên:** Trịnh Thị Lan Anh
+**MSSV:** 2A202600737
 
 ---
 
