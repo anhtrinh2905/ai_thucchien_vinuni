@@ -3,3 +3,5 @@
 **/**_env
 **/__pycache__
 **/*.ipynb
+# Added by ggshield
+.cache_ggshield
