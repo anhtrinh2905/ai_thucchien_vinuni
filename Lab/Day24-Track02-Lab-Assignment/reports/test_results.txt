@@ -1,0 +1,8 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.11, pytest-9.0.3, pluggy-1.5.0 -- /Users/trinhthilananh/miniconda3/bin/python3.13
+cachedir: .pytest_cache
+rootdir: /Users/trinhthilananh/Documents/Projects/VinAI/Day24-Track02-Lab-Assignment
+plugins: anyio-4.12.1, langsmith-0.8.9, base-url-2.1.0, Faker-37.12.0, playwright-0.8.0
+collecting ... collected 0 items
+
+============================ no tests ran in 0.00s =============================
